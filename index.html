@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Meter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Inconsolata:wght@200..900&family=Kalnia+Glaze:wght@100..700&family=Oswald:wght@200..700&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+        /* Add your desired styling here */
+        body{
+            font-family: "IBM Plex Sans", sans-serif;
+            
+        }
+        #result{
+            font-family: "Oswald", sans-serif;
+        }
+        .meter-container {
+            position: relative;
+            width: 375px;
+            height: 235px;
+            border-radius: 50%;
+            background-image: url(./images/meter.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .needle {
+        position: absolute;  
+        margin-top: 146px;
+        width: 188px;
+        height: 2px;
+        background-color: rgb(236, 31, 31);
+        transform-origin: right center; /* Origin point for rotation */
+        transition: transform 0.3s ease;
+        }
+        .circle { 
+            height: 9px;
+    width: 9px;
+    margin-top: 141px;
+    left: 182px;
+    border: solid 0px;  
+    border-radius: 50%;  
+    background-color: rgb(236, 31, 31);
+    display: inline-block;
+    position: absolute;
+    }
+.zoom-in-out{
+    animation: zoom 1s ease infinite;
+}
+@keyframes zoom{
+  /* At the beginning of the animation */
+  0% {
+    /* Scale the element to its original size */
+    transform: scale(1, 1);
+  }
+  /* At the middle of the animation */
+  50% {
+    /* Scale the element to 1.5 times its original size */
+    transform: scale(1.5, 1.5);
+  }
+  /* At the end of the animation */
+  100% {
+    /* Scale the element back to its original size */
+    transform: scale(1, 1);
+  }
+}
+    </style>
+</head>
+<body>
+    <h1 class="text-center mb-3">BMI CALCULATOR</h1>
+    
+        <div class="row mb-5">
+                  
+               <div class="col-lg-4"></div>
+               <div class="col-lg-4">
+                <center>
+                    <div class="meter-container">
+                        <div class="needle" id="needle"></div>
+                        <div class="circle"></div>
+                    </div>
+                    <form id="bmiForm form-control">
+                        <input type="text" class="form-control w-75 mb-3" id="weight" placeholder="Enter your Weight">
+                        <input type="text" class="form-control w-75 mb-3" id="height" placeholder="Enter your Height">
+                        <button class="btn btn-primary form-control w-75 mb-3" onclick="calculateBMI()">Calculate</button>
+                        <button class="btn btn-danger form-control w-75 mb-5" onclick="reset()">Reset <i class="fa-solid fa-rotate-right"></i></button>
+                    </form>
+                    <label id="result"></label><span><div class="zoom-in-out text-danger" id="bmi"></div></span>
+                </center>    
+               </div>
+               <div class="col-lg-4"></div>  
+        </div>
+    <script src="./script.js"></script>
+</body>
+</html>
